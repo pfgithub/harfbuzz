@@ -6,6 +6,7 @@ pub fn build(b: *std.Build) void {
     const enable_freetype = b.option(bool, "enable_freetype", "Build Freetype") orelse true;
     const use_system_zlib = b.option(bool, "freetype_use_system_zlib", "Use system zlib") orelse false;
     const enable_brotli = b.option(bool, "freetype_enable_brotli", "Build brotli") orelse true;
+    const disable_mutex = b.option(bool, "freetype_disable_mutex", "Disable mutex") orelse false;
 
     const lib = b.addStaticLibrary(.{
         .name = "harfbuzz",
@@ -28,6 +29,9 @@ pub fn build(b: *std.Build) void {
         })) |dep| {
             lib.linkLibrary(dep.artifact("freetype"));
         }
+    }
+    if (disable_mutex) {
+        lib.defineCMacro("HB_NO_MT", "1");
     }
     b.installArtifact(lib);
 }
