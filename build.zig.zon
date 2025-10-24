@@ -1,5 +1,6 @@
 .{
-    .name = "harfbuzz",
+    .name = .harfbuzz,
+    .fingerprint = 0xbd60917c31b429d3,
     .version = "0.0.0",
     .paths = .{
         "include",
@@ -15,12 +16,12 @@
     },
     .dependencies = .{
         .freetype = .{
-            .url = "https://pkg.machengine.org/freetype/972cd37bccecae2cc9f54cf0b562263a13209d02.tar.gz",
-            .hash = "12204cba3a237cd2c4ab983f5a28d9b54e7a9912d8c7c6e38e23140b0171d6e1ebf8",
+            .url = "https://github.com/pfgithub/freetype/archive/a0642d422b22139029cae00878b2307992c4decb.tar.gz",
+            .hash = "freetype-0.0.0-YcsF6XxJcwB9pFLAvyqAxBl6fzPtbb2KLWwgPy9xREcv",
         },
         .brotli = .{
-            .url = "https://pkg.machengine.org/brotli/10961426f03016e273f4f4653eae907e9e2339b6.tar.gz",
-            .hash = "122031789a7c6364c2f99164c1183661bb5fe914ad7336cc224039c7fba649f35c47",
+            .url = "https://github.com/pfgithub/brotli/archive/970bd99bb6aececbff07c8fa68c9bc9b6c219a00.tar.gz",
+            .hash = "N-V-__8AAPsyIgBasY6ejf12dIK4rp_3lQMbvnHXf1Pcc15j",
             .lazy = true,
         },
     },

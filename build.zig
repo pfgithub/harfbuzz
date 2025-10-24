@@ -7,10 +7,13 @@ pub fn build(b: *std.Build) void {
     const use_system_zlib = b.option(bool, "freetype_use_system_zlib", "Use system zlib") orelse false;
     const enable_brotli = b.option(bool, "freetype_enable_brotli", "Build brotli") orelse true;
 
-    const lib = b.addStaticLibrary(.{
+    const lib = b.addLibrary(.{
         .name = "harfbuzz",
-        .target = target,
-        .optimize = optimize,
+        .root_module = b.createModule(.{
+            .target = target,
+            .optimize = optimize,
+        }),
+        .linkage = .static,
     });
     lib.addCSourceFile(.{ .file = b.path("src/harfbuzz.cc") });
     lib.linkLibCpp();
